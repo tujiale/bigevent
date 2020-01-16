@@ -32,27 +32,9 @@
     </div>
 </body>
 <script src="./js/jquery-1.12.4.min.js"></script>
-<script>
-    //用户登录
-    var user = {
-        login: function(name, password) {
-            $.post('http://192.168.172.82:8000/admin/login', {
-                'user_name': name,
-                'password': password
-            }).then(function(res) {
-                console.log(res);
-                //反馈之后的动作
-                if (res.code == 200) {
-                    //成功跳转到主页
-                    window.location.href = "./index.html"
-                } else {
-                    //失败提示信息
-                    alert(res.msg)
-                }
-            })
-        }
-    }
-</script>
+<script src="./js/util/config.js"></script>
+<script src="./js/util/user.js"></script>
+
 
 <script>
     //1.用户登录
@@ -67,7 +49,19 @@
             alert('不能为空')
             return
         }
-        user.login(name, password)
+
+        //用户登录
+        user.login(name, password).then(function(res) {
+            console.log(res);
+            //反馈之后的动作
+            if (res.code == 200) {
+                //成功跳转到主页
+                window.location.href = "./index.html"
+            } else {
+                //失败提示信息
+                alert(res.msg)
+            }
+        })
     })
 </script>
 
