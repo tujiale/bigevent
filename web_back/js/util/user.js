@@ -7,8 +7,10 @@
 
 var user = {
     // 用户登陆
-    login: function(name, password) {
-        return $.post(APILIST.user_login, {
+    login: function(name,password) {
+        // 函数的返回值就是一个promise对象。
+        // $.post()是一个函数，它的结果是一个promise对象
+        return $.post(APILIST.user_login,{
             'user_name': name,
             'password': password
         })
@@ -18,7 +20,9 @@ var user = {
         return $.post(APILIST.user_logout)
     },
     // 获取信息
-    getInfo: function() {
-        return $.get(APILIST.user_getInfo)
+    getInfo:function(){
+        var t = $.get(APILIST.user_getInfo)
+        console.log(t)
+        return  t
     }
 }
