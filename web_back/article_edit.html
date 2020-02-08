@@ -105,13 +105,13 @@
     // str.substr(起始下标，取出多长) 如果省略第二个参数就是取出从起点开始到结束的全部
 
     // 2. 根据id去取回这篇文章的信息，并显示在页面上
-    var id = window.location.search.substr(4)
+    let id = window.location.search.substr(4)
 
     getAndShowCategory()
         // 3. 实现保存编辑
     $('#saveBtn').click(function() {
         // - 收集数据
-        var fd = new FormData(document.getElementById('form'))
+        let fd = new FormData(document.getElementById('form'))
             // 要获取formdate中的数据，注意把name属性设置成与接口中的参数一一对应。
 
         // 追加id
@@ -160,7 +160,7 @@
         category.get().then(function(res) {
             console.log(res);
             if (res.code === 200) {
-                var htmlStr = template('cate', res)
+                let htmlStr = template('cate', res)
                 console.log(htmlStr);
                 // 写入select
                 $('#type').html(htmlStr)

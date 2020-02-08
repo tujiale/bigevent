@@ -3,11 +3,11 @@
 
 // 所有接口的基地址
 // 就是运行小黑窗服务器的地址.如果当前的服务器就是在自已电脑上，就可以直接写成localhost
-var BASEURL = 'http://172.20.10.2:8000'
+let BASEURL = 'http://172.20.10.2:8000'
 
 
 // 用来保存所有的接口信息
-var APILIST = {
+let APILIST = {
     user_login: BASEURL + '/admin/login',
     user_logout: BASEURL + '/admin/logout',
     user_getInfo: BASEURL + '/admin/getuser',

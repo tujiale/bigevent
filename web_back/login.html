@@ -43,8 +43,8 @@
     //(1)收集用户信息，简单判断
     //(2)请求ajax接口，根据接口的反馈做后续的动作
     $('#btnLogin').click(function() {
-        var name = $("#username").val().trim();
-        var password = $('#password').val().trim();
+        let name = $("#username").val().trim();
+        let password = $('#password').val().trim();
         if (name.length == 0 || password.length == 0) {
             alert('不能为空')
             return

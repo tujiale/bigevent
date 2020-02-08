@@ -133,10 +133,10 @@
 </script>
 
 <script>
-    var curPage = 1; // 全局变量，表示当前要查询第几页的数据
-    var curType = ''; // 全局变量，表示当前要查询文章的类型编号
-    var curStatus = ''; // 全局变量，表示当前要查询文章的状态
-    var curTotalPage; // 记录上一次获取的总页数
+    let curPage = 1; // 全局变量，表示当前要查询第几页的数据
+    let curType = ''; // 全局变量，表示当前要查询文章的类型编号
+    let curStatus = ''; // 全局变量，表示当前要查询文章的状态
+    let curTotalPage; // 记录上一次获取的总页数
 
     // 1. 获取所有的文章类别信息，并显示在下拉列表中
     // 思路：
@@ -144,7 +144,7 @@
     category.get().then(function(res) {
         // console.log(res);
         // arttemplate渲染到页面
-        var htmlstr = template('tmp_category', res)
+        let htmlstr = template('tmp_category', res)
         console.log(htmlstr);
         $('#selCategory').html(htmlstr)
     })
@@ -157,7 +157,7 @@
             // console.log(res);
             if (res.code === 200) {
                 // （1） arttempaltte渲染到表格
-                var htmlStr = template('tmp_table', res)
+                let htmlStr = template('tmp_table', res)
                 $('#tbody').html(htmlStr)
 
                 // (2) 设置分页插件
@@ -224,7 +224,7 @@
             return
         }
 
-        var id = $(this).attr('data-id')
+        let id = $(this).attr('data-id')
             // alert(id)
         article.del(id).then(function(res) {
             console.log(res);
