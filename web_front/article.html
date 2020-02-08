@@ -227,29 +227,40 @@
         if (res.code == 200) {
             let t = res.data
                 // 给对应的dom元素赋值
-            $('#author').html(t.author);
-            $('#comment').html(t.comment);
-            $('#content').html(t.content);
-            $('#date').html(t.date);
+            let {
+                author,
+                comment,
+                content,
+                date,
+                prev,
+                next,
+                read,
+                title,
+                type_name
+            } = t
+            $('#author').html(author);
+            $('#comment').html(comment);
+            $('#content').html(content);
+            $('#date').html(date);
             //上，下文章导航
             // 有的文章有一篇，有的可能没有，所以要先判断一下。
-            if (t.prev) {
-                $('#prev').attr('href', './article.html?id=' + t.prev.id);
-                $('#prev').text(t.prev.title);
+            if (prev) {
+                $('#prev').attr('href', './article.html?id=' + prev.id);
+                $('#prev').text(prev.title);
             } else {
                 $('#prev').text('无');
             }
-            if (t.next) {
-                $('#next').attr('href', './article.html?id=' + t.next.id)
-                $('#next').text(t.next.title)
+            if (next) {
+                $('#next').attr('href', './article.html?id=' + next.id)
+                $('#next').text(next.title)
             } else {
                 $('#next').text('无');
             }
 
 
-            $('#read').html(t.read);
-            $('#title').html(t.title);
-            $('#type_name').html(t.type_name);
+            $('#read').html(read);
+            $('#title').html(title);
+            $('#type_name').html(type_name);
 
         }
     })

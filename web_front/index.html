@@ -242,14 +242,18 @@
     //  调用接口，获取数据，template渲染
     article.getFouceFive().then(function(res) {
         console.log(res);
-        if (res.code === 200) {
+        let {
+            code,
+            msg
+        } = res
+        if (code === 200) {
             // 渲染
             let htmlStr = template("focus", res)
                 // console.log(htmlStr);
             $('#focus_list').html(htmlStr)
 
         } else {
-            alert(res.msg)
+            alert(msg)
         }
     })
 
@@ -257,27 +261,35 @@
     //  调用接口，获取数据，template渲染
     article.getRank().then(function(res) {
         console.log(res);
-        if (res.code === 200) {
+        let {
+            code,
+            msg
+        } = res
+        if (code === 200) {
             // 渲染
             let htmlStr = template('tmpRank', res)
             console.log(htmlStr);
             $('#rank').html(htmlStr)
 
         } else {
-            alert(res.msg)
+            alert(msg)
         }
     })
 
     //4. 最新资讯
     article.getLastest().then(function(res) {
         console.log(res);
-        if (res.code === 200) {
+        let {
+            code,
+            msg
+        } = res
+        if (code === 200) {
             // 渲染
             let htmlStr = template('tmpNews', res)
             console.log(htmlStr);
             $('#news_list').html(htmlStr)
         } else {
-            alert(res.msg)
+            alert(msg)
         }
     })
 </script>

@@ -232,14 +232,18 @@
     // id就是当前的类别编号
     article.getRank(id).then(function(res) {
         console.log(res);
-        if (res.code === 200) {
+        let {
+            code,
+            msg
+        } = res
+        if (code === 200) {
             // 渲染
             let htmlStr = template('tmpRank', res)
             console.log(htmlStr);
             $('#rank').html(htmlStr)
 
         } else {
-            alert(res.msg)
+            alert(msg)
         }
     })
 
