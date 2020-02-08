@@ -194,7 +194,7 @@
     // 1. 从地址栏中获取出id
     // window.localtion  http://127.0.0.1:5500/web_front/list.html?id=1
     // window.location.search  ?id=1
-    var id = window.location.search.substr(4)
+    let id = window.location.search.substr(4)
 
     // 2. 显示菜单导航菜单，并把当前的文章类别高亮显示 
     // 获取文章的类型并显示
@@ -203,7 +203,7 @@
         res.curId = id
 
         // 渲染结构
-        var htmlStr = template('cate', res)
+        let htmlStr = template('cate', res)
             // console.log(htmlStr);
             // 显示
             // 替换整个容器中的html
@@ -224,7 +224,7 @@
     })
 
     // 3. 显示文章列表
-    var curPage = 1; // 当前的要取回第几页的文章
+    let curPage = 1; // 当前的要取回第几页的文章
     // 调用接口拿数据，并显示
     getAndShow()
 
@@ -234,7 +234,7 @@
         console.log(res);
         if (res.code === 200) {
             // 渲染
-            var htmlStr = template('tmpRank', res)
+            let htmlStr = template('tmpRank', res)
             console.log(htmlStr);
             $('#rank').html(htmlStr)
 
@@ -249,7 +249,7 @@
         article.getList(id, curPage).then(function(res) {
             console.log(res);
             // res.pages表示当前查询条件得到的数据的总页数
-            var htmlStr = template('tmpNews', res)
+            let htmlStr = template('tmpNews', res)
                 // 数据渲染
             console.log(htmlStr);
             $('#list').html(htmlStr)

@@ -228,7 +228,7 @@
     category.get().then(function(res) {
         console.log(res);
         // 渲染结构
-        var htmlStr = template('cate', res)
+        let htmlStr = template('cate', res)
             // console.log(htmlStr);
             // 显示
             // 替换整个容器中的html
@@ -244,7 +244,7 @@
         console.log(res);
         if (res.code === 200) {
             // 渲染
-            var htmlStr = template("focus", res)
+            let htmlStr = template("focus", res)
                 // console.log(htmlStr);
             $('#focus_list').html(htmlStr)
 
@@ -259,7 +259,7 @@
         console.log(res);
         if (res.code === 200) {
             // 渲染
-            var htmlStr = template('tmpRank', res)
+            let htmlStr = template('tmpRank', res)
             console.log(htmlStr);
             $('#rank').html(htmlStr)
 
@@ -273,7 +273,7 @@
         console.log(res);
         if (res.code === 200) {
             // 渲染
-            var htmlStr = template('tmpNews', res)
+            let htmlStr = template('tmpNews', res)
             console.log(htmlStr);
             $('#news_list').html(htmlStr)
         } else {

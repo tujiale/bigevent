@@ -218,14 +218,14 @@
     // http://127.0.0.1:5500/web_front/article.html?id=1576408259770
     // location.search  : ?id=1576408259770
     // location.search.substr(4): 从下标为4的地方开始取子字符串，直到结束
-    var id = location.search.substr(4)
+    let id = location.search.substr(4)
         // alert(id)
 
     // 2. 调用接口，获取这篇文章的详情，显示到页面上
     article.getDetail(id).then(function(res) {
         console.log(res);
         if (res.code == 200) {
-            var t = res.data
+            let t = res.data
                 // 给对应的dom元素赋值
             $('#author').html(t.author);
             $('#comment').html(t.comment);
@@ -259,8 +259,8 @@
         // 4. 添加评论
     $('#btn').click(function() {
         // - 收集用户信息
-        var name = $('#comment_name').val().trim()
-        var content = $('#comment_content').val().trim()
+        let name = $('#comment_name').val().trim()
+        let content = $('#comment_content').val().trim()
 
         if (name.length === 0 || content.length === 0) {
             bootbox.alert("不能为空");
@@ -294,7 +294,7 @@
 
                 })
                 console.log(res.data);
-                var htmlStr = template('tmp', res)
+                let htmlStr = template('tmp', res)
                 $('#comment_list').html(htmlStr)
             }
         })
