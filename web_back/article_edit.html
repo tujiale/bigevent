@@ -119,10 +119,14 @@
         fd.set('content', tinymce.activeEditor.getContent())
         article.edit(fd).then(function(res) {
                 console.log(res);
-                if (res.code === 200) {
+                let {
+                    code,
+                    msg
+                } = res
+                if (code === 200) {
                     alert("保存成功")
                 } else {
-                    alert(res.msg)
+                    alert(msg)
                 }
 
             })
@@ -135,13 +139,23 @@
     function getAndShow(id) {
         article.getById(id).then(function(res) {
             console.log(res);
-            if (res.code === 200) {
+            let {
+                code,
+                msg
+            } = res
+            if (code === 200) {
                 // 把结果显示在页面上：把数据填入到表单中
-                $('#title').val(res.data.title)
-                $('#previewImg').attr('src', res.data.cover)
-                $('#dateinput').val(res.data.date)
+                let {
+                    title,
+                    cover,
+                    date,
+                    type
+                } = res.data
+                $('#title').val(title)
+                $('#previewImg').attr('src', cover)
+                $('#dateinput').val(date)
 
-                $('#type').val(res.data.type)
+                $('#type').val(type)
 
                 // 给富文件编辑器，设置内容
                 setTimeout(function() {
@@ -151,7 +165,7 @@
                     tinymce.activeEditor.setContent(res.data.content)
                 }, 1000)
             } else {
-                alert(res.msg)
+                alert(msg)
             }
         })
     }
@@ -159,7 +173,11 @@
     function getAndShowCategory() {
         category.get().then(function(res) {
             console.log(res);
-            if (res.code === 200) {
+            let {
+                code,
+                msg
+            } = res
+            if (code === 200) {
                 let htmlStr = template('cate', res)
                 console.log(htmlStr);
                 // 写入select
@@ -170,7 +188,7 @@
                 // 类别获取完成之后，再去获取并显示文章详情
                 getAndShow(id)
             } else {
-                alert(res.msg)
+                alert(msg)
             }
 
         })

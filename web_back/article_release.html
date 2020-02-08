@@ -109,13 +109,17 @@
 
         article.add(fd).then(function(res) {
             console.log(res);
-            if (res.code === 201) {
+            let {
+                code,
+                msg
+            } = res
+            if (code === 201) {
                 alert('发布成功');
                 // reset是表单（dom对象）的方法
                 // 用来重置
                 $('#myform')[0].reset();
             } else {
-                alert(res.msg)
+                alert(msg)
             }
         })
     })
@@ -124,11 +128,15 @@
     // 2.获取文章类别，并显示 
     category.get().then(function(res) {
         console.log(res);
-        if (res.code == 200) {
+        let {
+            code,
+            msg
+        } = res
+        if (code == 200) {
             let htmlStr = template('tmp', res)
             $('#selCategory').html(htmlStr)
         } else {
-            alert(res.msg)
+            alert(msg)
         }
     })
 

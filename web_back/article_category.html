@@ -166,7 +166,11 @@
         // 调用添加方法
         category.add(name, slug).then(function(res) {
             console.log(res);
-            if (res.code === 200) {
+            let {
+                code,
+                msg
+            } = res
+            if (code === 200) {
                 // 添成加功
                 // (1) 清空用户的输入
                 $('#name').val('')
@@ -176,7 +180,7 @@
                 // (3) 重新获取新数据
                 getAndShow()
             } else {
-                alert(res.msg)
+                alert(msg)
             }
         })
 
@@ -200,11 +204,15 @@
 
         category.del(id).then(function(res) {
             console.log(res);
-            if (res.code === 200) {
+            let {
+                code,
+                msg
+            } = res
+            if (code === 200) {
                 // 删除成功,重新获取数据
                 getAndShow()
             } else {
-                alert(res.msg)
+                alert(msg)
             }
         })
     })
@@ -241,14 +249,18 @@
         }
         // console.log(id,new_name,new_slug);
         category.edit(id, new_name, new_slug).then(function(res) {
-            if (res.code === 200) {
+            let {
+                code,
+                msg
+            } = res
+            if (code === 200) {
                 // 编辑成功
                 // (1) 隐藏模态框
                 $('#editModal').modal('hide'); // 把id为editModal的模态框隐藏起来
                 // (2) 重新获取新数据
                 getAndShow()
             } else {
-                alert(res.msg)
+                alert(msg)
             }
 
         })

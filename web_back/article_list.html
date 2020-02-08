@@ -155,7 +155,11 @@
     function getAndShow() {
         article.get(curPage, curType, curStatus).then(function(res) {
             // console.log(res);
-            if (res.code === 200) {
+            let {
+                code,
+                msg
+            } = res
+            if (code === 200) {
                 // （1） arttempaltte渲染到表格
                 let htmlStr = template('tmp_table', res)
                 $('#tbody').html(htmlStr)
@@ -188,7 +192,7 @@
                 });
 
             } else {
-                alert(res.msg)
+                alert(msg)
             }
 
         })
@@ -228,12 +232,16 @@
             // alert(id)
         article.del(id).then(function(res) {
             console.log(res);
-            if (res.code === 200) {
+            let {
+                code,
+                msg
+            } = res
+            if (code === 200) {
                 // 删除成功
                 // 重新获取
                 getAndShow()
             } else {
-                alert(res.msg)
+                alert(msg)
             }
         })
     })

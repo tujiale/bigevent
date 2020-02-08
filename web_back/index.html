@@ -54,60 +54,60 @@
         <iframe src="main_count.html" frameborder="0" id="main_frame" name="main_frame" frameborder="0" scrolling="auto"></iframe>
     </div>
 
-    <script>
-        let $level01 = $('.level01');
-        let $subli = $('.level02 li')
-        $level01.click(function() {
-            $level01.not($(this)).removeClass('active');
-            $(this).addClass('active');
-
-            if ($(this).next().hasClass('level02')) {
-                $(this).next().slideToggle();
-                $(this).find('b').toggleClass('rotate0');
-            } else {
-                $subli.removeClass('active');
-            }
-        })
-
-        $subli.click(function() {
-            $subli.not($(this)).removeClass('active');
-            $(this).addClass('active');
-
-            if (!$(this).parent().prev().hasClass('active')) {
-                $level01.removeClass('active');
-                $(this).parent().prev().addClass('active');
-            }
-        })
-
-        function resizeFrame() {
-            let frame_w = $('#main_body').outerWidth();
-            let frame_h = $('#main_body').outerHeight();
-            $('#main_frame').css({
-                'width': frame_w,
-                'height': frame_h
-            });
-        }
-
-        resizeFrame();
-
-        $(window).resize(function() {
-            resizeFrame();
-        })
-
-
-        function setMenu(m, n) {
-            $level01.eq(m).addClass('active').siblings().not('.level02').removeClass('active');
-            if (m != 1) {
-                $('.level02').slideUp();
-            } else {
-                $('.level02').slideDown();
-                $('.level02').children().eq(n).addClass('active').siblings().removeClass('active');
-            }
-        }
-    </script>
 
 </body>
 
+<script>
+    let $level01 = $('.level01');
+    let $subli = $('.level02 li')
+    $level01.click(function() {
+        $level01.not($(this)).removeClass('active');
+        $(this).addClass('active');
+
+        if ($(this).next().hasClass('level02')) {
+            $(this).next().slideToggle();
+            $(this).find('b').toggleClass('rotate0');
+        } else {
+            $subli.removeClass('active');
+        }
+    })
+
+    $subli.click(function() {
+        $subli.not($(this)).removeClass('active');
+        $(this).addClass('active');
+
+        if (!$(this).parent().prev().hasClass('active')) {
+            $level01.removeClass('active');
+            $(this).parent().prev().addClass('active');
+        }
+    })
+
+    function resizeFrame() {
+        let frame_w = $('#main_body').outerWidth();
+        let frame_h = $('#main_body').outerHeight();
+        $('#main_frame').css({
+            'width': frame_w,
+            'height': frame_h
+        });
+    }
+
+    resizeFrame();
+
+    $(window).resize(function() {
+        resizeFrame();
+    })
+
+
+    function setMenu(m, n) {
+        $level01.eq(m).addClass('active').siblings().not('.level02').removeClass('active');
+        if (m != 1) {
+            $('.level02').slideUp();
+        } else {
+            $('.level02').slideDown();
+            $('.level02').children().eq(n).addClass('active').siblings().removeClass('active');
+        }
+    }
+</script>
 <script>
     // 1. 用户退出
     // 思路：
@@ -115,13 +115,17 @@
     $("#btnLogout").click(function() {
 
         user.logout().then(function(res) {
-            console.log(res);
 
-            if (res.code == 200) {
+            console.log(res);
+            let {
+                code,
+                msg
+            } = res
+            if (code == 200) {
                 alert('成功退出')
                 window.location.href = "./login.html"
             } else {
-                alert('res.msg')
+                alert('msg')
             }
         })
     })
@@ -131,8 +135,12 @@
     user.getInfo().then(function(res) {
         console.log(res);
         if (res.code == 200) {
-            $('#username').text(res.data.nickname)
-            $('.userImg').attr('src', res.data.user_pic)
+            let {
+                nickname,
+                user_pic
+            } = res.data
+            $('#username').text(nickname)
+            $('.userImg').attr('src', user_pic)
                 // $('#username').text('李思思')
                 // $('.userImg').attr('src', 'images/2.jpg')
         }
