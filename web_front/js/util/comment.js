@@ -6,11 +6,11 @@ let comment = {
      * @param {*} content 评论的内容
      * @param {*} article_id 评论的文章编号
      */
-    add: function(name, content, article_id) {
+    add(name, content, article_id) {
         return $.post(APILIST.comment_add, {
-            'name': name,
-            'content': content,
-            'article_id': article_id
+            name,
+            content,
+            article_id
         })
     },
 
@@ -18,7 +18,7 @@ let comment = {
      * 获取文章的评论
      * @param {*} id  文章编号
      */
-    get: function(id) {
+    get(id) {
         return $.get(APILIST.comment_get, { 'article_id': id })
     }
 }
